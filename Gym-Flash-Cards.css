@@ -1,0 +1,44 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace; 
+}
+.container{
+    min-height: 100vh;
+    display: grid;
+    align-items: center;
+    justify-content: auto auto auto;
+    grid-auto-rows: 100;
+}
+.card:hover{
+    cursor: pointer;
+    background: green;
+    color: white;
+}
+.The-Game {
+    display: flex;
+    width: 300px;
+    height: 300px;
+    gap: 10px 10px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: auto;
+    padding-left: 160px;
+}
+.card {
+    display: grid;
+    width: 100px;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid black;
+    transition: background 0.2s ease-in-out
+}
+.card:hover {
+    cursor: pointer;
+    background: rgb(108, 19, 190);
+}
+.occuppied:hover {
+    background: lightgreen;
+}
