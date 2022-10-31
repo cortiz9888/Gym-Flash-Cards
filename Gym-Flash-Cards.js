@@ -7,96 +7,17 @@
 //
 //
 //
+const cards = document.querySelectorAll('.card');    
 let cardToCheck = null;
 let totalClicks = 0;
 let totalRemaining = null;
 let matchedCards = [];
 let busy = true;
-// class gymFlashCards{
-//     constructor(totalTime, cards){
-//         this.cardsArray = cards;
-//         this.totalTime = totalTime;
-//         this.timeRemaining = totalTime;
-//         this.timer = document.getElementById('time-remaining');
-//         this.ticker = document.getElementById('flips');
+//let lockBoard = false;
+let hasFlipped = false;
+let firstChoice, secondChoice;
+let flippedCard = [];
 
-//     }
-//     //startGame(){
-//    //     this.cardToCheck = null;
-//     //    this.totalClicks = 0;
-//     //    this.totalRemaining = this.totalTime;
-//     //    this.matchedCards = [];
-//     //    this.busy = true;
-        
-//     //    setTimeout(()=>{
-//      //       this.shuffleCards();
-//     //        this.countDown = this.startCountDown();
-//     //        this.busy = false;
-//     //    }, 500);
-//     //    this.hideCards()
-//     //    this.timeRemaining.innerText = this.timeRemaining
-//     //    this.ticker.innerText = this.totalClicks
-//     //}
-
-//     hideCards(){
-//         this.cardsArray.forEach(card =>{
-//             card.classList.remove('visible')
-//             card.classList.remove('matched')
-//         })
-//     }
-//     flipCard(card){
-//         if(this.canFlipCard(card)){
-            
-//             this.totalClicks++;
-//             this.ticker.innerText = this.totalClicks;
-//             card.classList.add('visible')
-//             if(this.cardToCheck)
-//                 this.checkForCardMatch(card);
-//             else
-//                  this.cardToCheck = card
-//         }
-//     }
-//     checkForCardMatch(card){
-//         //if();
-//     }
-
-//     getCardType(card){
-//         return card.getElementsByClassName()
-//     }
-
-//     //startCountDown(){
-//     //    return setInterval(()=>{
-//     //        this.timeRemaining--
-//     //        this.timer.innerText = this.timeRemaining;
-//     //        if(this.timeRemaining === 0)
-//     //            this.gameOver();
-//     //    }, 1000)
-//     //}
-
-//     gameOver(){
-//         clearInterval(this.countDown);
-//         document.getElementById('gameOverText').classList.add('visible')
-//     }
-
-//     victory(){
-//         clearInterval(this.countDown);
-//         document.getElementById('victoryText').classList.add('visible')
-//     }
-
-//     //shuffleCards(){
-//     //    for(let i = this.cardsArray.length - 1; i > 0; i--){
-//     //        let randIndex = Math.floor(Math.random() * (i+1));
-//     //        this.cardsArray[randIndex].style.order = i;
-//     //        this.cardsArray[i].style.order = randIndex;
-//     //    }
-//     //}
-
-//     canFlipCard(card){
-//         //return true;
-//         return (!this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck);
-//     }
-    
-// }
 function startGame() {
     console.log("start game working")
     cardToCheck = null;
@@ -105,73 +26,91 @@ function startGame() {
     matchedCards = [];
     busy = true;
 
-    document.getElementById('gameOverText').style.display = "none";
-    document.getElementById('victoryText').style.display = "none"
-  
-    setTimeout(() => {
-      //shuffleCards();
-      let countDown = startCountDown();
-      busy = false;
-    }, 500);
-    //hideCards()
-    //this.timeRemaining.innerText = this.timeRemaining
-    //this.ticker.innerText = this.totalClicks
-  }
+    ready();
+
+   }
   function ready(){
-    let overlays = Array.from(document.getElementsByClassName('overlayText'));
     let cards = Array.from (document.getElementsByClassName('card'));
     console.log(cards)
-    //let game = new gymFlashCards(100, cards)
-    overlays.forEach(overlays =>{
-        overlays.addEventListener('click', ()=>{
-            overlays.classList.remove('visible');
-            startGame();
-        })
-    })
-    cards.forEach(cards =>{
-        cards.addEventListener('click', ()=>{
-            game.flipCard(cards);
+
+    cards.forEach(card =>{
+        card.addEventListener('click', ()=>{
+            flipCard(card);
         })
     })
 }
-  
-  function hideCards(){
-  //this.timeRemaining.innerText = this.timeRemaining
-  //this.ticker.innerText = this.totalClicks
+  function flipCard(card){
+    console.log(card)
+    console.log(card.firstElementChild)
+    card.firstElementChild.style.transform = 'rotateY(-180deg)'
+    card.lastElementChild.style.transform = 'rotateY(0deg)'
+    flippedCard.push(card);
+    // console.log(flippedCard[0] + '0')
+    // console.log(flippedCard[1] + '1')
+      if(flippedCard.length >= 2){
+        if (flippedCard[0].getElementsByTagName('div').item(0).id === card.getElementsByTagName('div').item(0).id){
+          console.log(flippedCard[0].getElementsByTagName('div').item(0).id)
+          console.log(card.getElementsByTagName('div').item(0).id)
+          matchCards(flippedCard[0], card);
+            //flippedCard.pop();
+            // console.log(flippedCard[0].getElementsByTagName('div').item(0).id)
+            // console.log(card.getElementsByTagName('div').item(0).id)
+        }else {
+          console.log(flippedCard[0].getElementsByTagName('div').item(0).id)
+          console.log(card.getElementsByTagName('div').item(0).id)
+          hideCards(flippedCard[0], card);
+          //flippedCard.pop();
+          console.log('not matched')
+          // console.log(flippedCard[0].getElementsByTagName('div').item(0).id)
+          // console.log(card.getElementsByTagName('div').item(0).id)
+        }
   }
-  function startCountDown(){
-    return setInterval(()=>{
-       timeRemaining-- 
-       timer.innerText = timeRemaining;
-       if(timeRemaining === 0)
-            gameOver();
-    }, 1000)
+      // if (lockBoard) {return;}                //lock board to prevent revealing of other cards after 2 have been selected.
+      // if (this === firstCard) {return;}  //Prevents double-click on same card
+
+  
+      // if (!hasFlipped) {                      //Allows for toggle between first card clicked and second card clicked. (has first card been clicked? true or false.)
+      //     hasFlipped = true;
+      //     firstCard = this;                   // First clicked card
+      //     // console.log(hasFlipped, firstCard);
+      //     return;
+      // }
+      // hasFlipped = false;
+      // secondCard = this;                     //Second clicked card
+      // checkMatch();
+  }
+  
+function matchCards(firstChoice, secondChoice){
+  flippedCard = []
+
 }
 
-  function shuffleCards(){
-    for(let i = cards.length - 1; i > 0; i--){
-        let randIndex = Math.floor(Math.random() * (i+1));
-        this.cards[randIndex].style.order = i;
-        this.cards[i].style.order = randIndex;
-    }
-}
-// function ready(){
-//     let overlays = Array.from(document.getElementsByClassName('overlayText'));
-//     let cards = Array.from (document.getElementsByClassName('card'));
-//     console.log(cards)
-//     //let game = new gymFlashCards(100, cards)
-//     overlays.forEach(overlays =>{
-//         overlays.addEventListener('click', ()=>{
-//             overlays.classList.remove('visible');
-//             startGame();
-//         })
-//     })
-//     cards.forEach(cards =>{
-//         cards.addEventListener('click', ()=>{
-//             game.flipCard(cards);
-//         })
-//     })
+  function hideCards(firstChoice, secondChoice){
+    setTimeout(()=>{ firstChoice.lastElementChild.style.transform = 'rotateY(180deg)'
+    secondChoice.firstElementChild.style.transform = 'rotateY(0deg)'
+
+    firstChoice.firstElementChild.style.transform = 'rotateY(0deg)'
+    secondChoice.lastElementChild.style.transform = 'rotateY(180deg)'
+    flippedCard = []}, 500)
+    
+  }
+//   function startCountDown(){
+//     return setInterval(()=>{
+//        timeRemaining-- 
+//        timer.innerText = timeRemaining;
+//        if(timeRemaining === 0)
+//             gameOver();
+//     }, 1000)
 // }
+
+//   function shuffleCards(){
+//     for(let i = cards.length - 1; i > 0; i--){
+//         let randIndex = Math.floor(Math.random() * (i+1));
+//         this.cards[randIndex].style.order = i;
+//         this.cards[i].style.order = randIndex;
+//     }
+// }
+
 
 if(document.readyState === 'loading'){
    document.addEventListener ('DOMContentLoaded', ready());
@@ -179,4 +118,3 @@ if(document.readyState === 'loading'){
    ready();
 }
 
-//new gymFlashCards(100, cardArray)

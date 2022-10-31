@@ -53,7 +53,7 @@ body {
     border-style: solid;
     transition: transform 500ms ease-in-out;
 }
-.card:hover .cardBack{
+/* .card:hover .cardBack{
     transform: rotateY(-180deg);
 }
 .card:hover .cardFront{
@@ -61,7 +61,7 @@ body {
 }
 .card:hover .card{
     animation: dance 1s linear infinite 500ms;
-}
+} */
 @keyframes dance {
     0%, 100%{
         transfrom: rotate(0)
