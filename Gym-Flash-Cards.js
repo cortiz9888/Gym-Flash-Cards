@@ -18,6 +18,8 @@ let hasFlipped = false;
 let firstChoice, secondChoice;
 let flippedCard = [];
 
+alert('How to Play Gym-Flash-Cards: Try to find the card with the muscle group and match it with the workout associated with that muscle. good luck!!')
+
 function startGame() {
     console.log("start game working")
     cardToCheck = null;
@@ -112,9 +114,9 @@ function matchCards(firstChoice, secondChoice){
 // }
 
 
-if(document.readyState === 'loading'){
-   document.addEventListener ('DOMContentLoaded', ready());
-} else {
-   ready();
-}
+// if(document.readyState === 'loading'){
+//    document.addEventListener ('DOMContentLoaded', ready());
+// } else {
+//    ready();
+// }
 
