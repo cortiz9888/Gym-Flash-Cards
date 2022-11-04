@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Gym-Flash-Cards.css" />
+    <title>Gym Flash Cards</title>
+</head>
+
+<body>
+    <h1 class = 'page-title'>Gym-Flash-Cards</h1>
+   <!-- <div class = "overlayText">
+        Click to Start
+    </div>
+    <div id = "gameOverText" class = "overlayText">
+        Game Over
+        <span class="overlay-text-small">Click to Restart</span>
+    </div>
+    <div id = "victoryText" class = "overlayText">
+        You Won
+        <span class="overlay-text-small">Click to Restart</span>
+    </div>-->
+    <div class="gameContainer">
+        <div class="game-info-container">
+            <!-- <div class = 'game-info'>
+                Time <span id="time-remaining">100</span>
+            </div>
+            <div class = 'game-info'>
+                Flips <span id="Flips">0</span>
+            </div> -->
+        </div>
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout1'>
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Shoulders</p>
+                <div class = "cardValue1"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout2'>   
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Upper Chest</p>
+                <div class = "cardValue2"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout3'>    
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Chest</p>
+                <div class = 'cardValue3'></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout4'>
+                
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Triceps</p>
+                <div class = 'cardValue4'></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout5'>
+                
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Biceps</p>
+                <div class = 'cardValue5'></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout6'>
+                
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Abs</p>
+                <div class = 'cardValue6'></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout7'>
+                
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Traps</p>
+                <div class = 'cardValue7'></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout8'>
+                
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Lats</p>
+                <div class = 'cardValue8'></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout9'>
+                
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Quads</p>
+                <div class = 'cardValue9'></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout10'>
+                
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Hamstrings</p>
+                <div class = 'cardValue10'></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout11'>
+                
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Calves</p>
+                <div class = 'cardValue11'></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout1'>
+        
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Military Press</p>
+                <div class = "cardValue1"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout2'>
+                
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Incline</p>
+                <div class = 'cardValue2'></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout3'>
+                
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Dumbbell Press</p>
+                <div class = 'cardValue3'></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout4'>
+                
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Pushdowns</p>
+                <div class = 'cardValue4'></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout5'>
+                
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Curls</p>
+                <div class = 'cardValue5'></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout6'>
+                
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Crunches</p>
+                <div class = 'cardValue6'></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout7'>
+                
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Rows</p>
+                <div class = 'cardValue7'></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout8'>
+                
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Pulldowns</p>
+                <div class = 'cardValue8'></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout9'>
+                
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Squats</p>
+                <div class = 'cardValue9'></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout10'>
+                
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Leg Curls</p>
+                <div class = 'cardValue10'></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class ='cardBack card-face' id = 'workout11'>
+                
+            </div>
+            <div class = 'cardFront card-face'>
+                <p>Calf Raises</p>
+                <div class = 'cardValue11'></div>
+            </div>
+        </div>
+
+
+    </div>
+    <script defer src="Gym-Flash-Cards.js" ></script>
+</body>
+</html>
