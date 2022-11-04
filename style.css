@@ -1,0 +1,119 @@
+* {
+    box-sizing: border-box;
+}
+html{
+    min-height: 100vh;
+}
+body {
+    margin: 0;
+    background: radial-gradient(rgb(95, 94, 94), rgb(255, 255, 255));
+}
+
+.page-title{
+    color:royalblue;
+    font-family: fantasy;
+    font-weight: normal;
+    text-align: center;
+    font-size: 60px;
+}
+.game-info-container{
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+}
+.game-info{
+    color: blue;
+    font-size: 40px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.gameContainer{
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap:10px;
+    margin: 50px;
+    justify-content: center;
+    perspective: 500px;
+}
+.card{
+    position: relative;
+    height: 175px;
+    width: 125px;
+}
+.card-face {
+    position: absolute;
+    width: 125px;
+    height: 175px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    border-width: 1px;
+    border-style: solid;
+    transition: transform 500ms ease-in-out;
+}
+/* .card:hover .cardBack{
+    transform: rotateY(-180deg);
+}
+.card:hover .cardFront{
+    transform: rotateY(0);
+}
+.card:hover .card{
+    animation: dance 1s linear infinite 500ms;
+} */
+/* @keyframes dance {
+    0%, 100%{
+        transfrom: rotate(0)
+    }
+    25%{
+        transform: rotate(-30deg);
+    }
+    75%{
+        transform: rotate(30deg);
+    }
+    
+}
+
+.overlayText{
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    color: rgb(255, 0, 0);
+}
+.overlay-text-small{
+    font-size: .3em;
+
+}
+.overlayText.visible{
+    display: flex;
+    animation: overlay-grow 500ms forwards;
+    flex-direction: column;
+}
+@keyframes overlay-grow {
+    from{
+        background-color: rgba(0, 0, 0, 0);
+        font-size: 0;
+    }
+    to {
+        background-color: rgba(0, 0, 0, .8);
+        font-size: 10em;
+    }
+} */
+.cardBack{
+    background-color: black;
+    border-color: crimson;
+}
+.cardFront{
+    transform:rotateY(180deg);
+    background-color: gray ;
+    border-color: crimson;
+}
+
